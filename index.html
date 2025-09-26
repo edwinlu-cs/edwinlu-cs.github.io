@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset = "utf-8">
+                <title>Joe's Hotdogs</title>
+                <link rel="stylesheet" href="./style.css">
+                <style type="text/css">
+                        #result {
+                                display: none;
+                                width: 300px;            
+                                min-height: 120px;       
+                                border: 2px solid #333;  
+                                border-radius: 10px;      
+                                padding: 12px;           
+                                background-color: #f9f9f9;
+                                font-family: Arial, sans-serif;
+                                font-size: 14px;
+                                line-height: 1.5;
+                                box-shadow: 2px 2px 8px rgba(0,0,0,0.1); 
+                                margin: 20px auto;
+                                text-align: left;       
+                        }
+                </style>
+        </head>
+        <body>
+                <h1>Joe's Hotdogs</h1>
+                <h2 style = "text-align: center">
+                        Welcome to Joe's Hotdogs! <br/>
+                        We serve the best hotdogs in town along with delicious sides and drinks. <br/>
+                        Please place your order below.
+                </h2>
+                <div id="result"></div>
+                <nr/><input type = 'button' class = "b" value = "Order" onclick = "press()"><br/>
+                <script>
+                        hotdog = 4.99
+                        frenchFries = 3.99
+                        drink = 1.79
+                        function press() {
+                                numDogs = prompt("How many hotdogs would you like?")
+                                numFries = prompt("How many orders of fries would you like?")
+                                numDrinks = prompt("How many drinks would you like?")
+                                subtotal = (numDogs * hotdog) + (numFries * frenchFries) + (numDrinks * drink)
+                                if(subtotal < 30){
+                                        discount = subtotal*0.1
+                                        subtotal -= discount
+                                        discounted = true
+                                }
+                                total = subtotal *1.0625
+                                result = "Order Summary:<br/>"
+                                result += numDogs + " hotdogs: " + showMoney(numDogs * hotdog) + "<br/>"
+                                result += numFries + " orders of fries: " + showMoney(numFries * frenchFries) + "<br/>"
+                                result += numDrinks + " drinks: " + showMoney(numDrinks * drink) + "<br/>"
+                                if(discounted) {
+                                        result += "Subtotal before discount: " + showMoney(subtotal + discount) + "<br/>"
+                                        result += "Discount: " + showMoney(discount) + "<br/>"
+                                }
+                                result += "Subtotal: " + showMoney(subtotal) + "<br/>"
+                                result += "Total (with tax): " + showMoney(total) + "<br/>"
+                                document.getElementById("result").innerHTML = result
+                                document.getElementById("result").style.display = "block";
+                        }
+
+                        function showMoney(num) {
+                                num *= 100
+                                num = Math.round(num)
+                                num /= 100
+                                return "$" + num
+                        }
+                        
+                        //alert("popup\nboo")
+                        //document.getElementById("result").innerHTML = "stuff here now"
+                </script>
+        </body>
+</html>
