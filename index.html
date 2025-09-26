@@ -36,10 +36,12 @@
                         frenchFries = 3.99
                         drink = 1.79
                         function press() {
-                                numDogs = prompt("How many hotdogs would you like?")
-                                numFries = prompt("How many orders of fries would you like?")
-                                numDrinks = prompt("How many drinks would you like?")
+                                numDogs = parseInt(prompt("How many hotdogs would you like?"))
+                                numFries = parseInt(prompt("How many orders of fries would you like?"))
+                                numDrinks = parseInt(prompt("How many drinks would you like?"))
                                 subtotal = (numDogs * hotdog) + (numFries * frenchFries) + (numDrinks * drink)
+                                discounted = false
+                                discount = 0
                                 if(subtotal >= 30){
                                         discount = subtotal*0.1
                                         subtotal -= discount
